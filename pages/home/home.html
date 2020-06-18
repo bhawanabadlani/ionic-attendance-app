@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Service Hour{{date}} </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Welcome to JPS Office!</h2>
+  <p>
+    This is to track devotee's time serving in the JPS office on various days during a month for payment of their monthly maintenance.
+  </p>
+  <img src={{url}}>
+  <button ion-button color="secondary" (click)="changePicture()">Change Picture</button>
+  
+   <!-- input form add new devotee  -->
+  <ion-list>
+
+  <ion-item>
+    <ion-label stacked>Firstname</ion-label>
+    <ion-input type="text" [(ngModel)]="vfull_name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Picture url</ion-label>
+    <ion-input type="text" [(ngModel)]="vurl"></ion-input>
+  </ion-item>
+
+  <button ion-button color="secondary" (click)="saveDevotee()">Save</button>
+  
+
+</ion-list>
+
+ <!-- loop through array and build up devotee attendance list   -->
+
+  <ion-item *ngFor="let devotee of devotees" >  
+    <ion-thumbnail item-start>
+      <img src="{{devotee.url}}">
+    </ion-thumbnail>   
+    <ion-label>{{devotee.full_name}}</ion-label>
+     <ion-datetime  displayFormat="hh:mm A" pickerFormat="hh mm" [(ngModel)]="devotee.TimeIN"></ion-datetime>
+  </ion-item>
+</ion-content>
